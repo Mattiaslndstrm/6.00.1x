@@ -47,4 +47,3 @@ def longest_alphabetic_substring3(s):
 
 
 print(longest_alphabetic_substring3('abcdefghijklmnopqrstuvwxyz'))
-print('abc'>'aba')
