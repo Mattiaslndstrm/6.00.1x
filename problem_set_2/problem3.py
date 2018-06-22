@@ -16,7 +16,6 @@ def pay_debt_in_one_year(balance, interest, _lower=0, _upper=0):
         _upper = balance * ((1 + interest / 12) ** 12) / 12
         _lower = balance / 12
 
-    # guess is the average of _lower and _upper
     guess = (_lower + _upper) / 2
     orig_balance = balance
 
