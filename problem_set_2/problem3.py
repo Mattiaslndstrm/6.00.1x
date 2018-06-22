@@ -1,4 +1,4 @@
-def pay_debt_in_one_year(balance, interest, _upper=0, _lower=0):
+def pay_debt_in_one_year(balance, interest, _lower=0, _upper=0):
     """Calculates the minimum monthly payment to be free of debt in one year
 
     Input: balance      - positive int
@@ -26,8 +26,8 @@ def pay_debt_in_one_year(balance, interest, _upper=0, _lower=0):
     # returns the guess when it's inside the margin of error
     if balance <= 0 and balance > -0.01:
         return round(guess, 2)
-    # Bidirectional search. Recursively returns _lower set to guess if the
-    # guess was too low, and _upper set to guess if the guess was too high.
+    # Bidirectional search. Recursively returns upper_ set to guess if the
+    # guess was too high, and _lower set to guess if the guess was too low.
     if balance < -0.01:
-        return pay_debt_in_one_year(orig_balance, interest, guess, _lower)
-    return pay_debt_in_one_year(orig_balance, interest, _upper, guess)
+        return pay_debt_in_one_year(orig_balance, interest, _lower, guess)
+    return pay_debt_in_one_year(orig_balance, interest, guess, _upper)
