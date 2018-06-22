@@ -23,8 +23,9 @@ def pay_debt_in_one_year(balance, interest, _lower=0, _upper=0):
         balance = (balance - guess) + interest / 12 * (balance - guess)
 
     # returns the guess when it's inside the margin of error
-    if balance <= 0 and balance > -0.01:
+    if -0.01 < balance <= 0:
         return round(guess, 2)
+
     # Bidirectional search. Recursively returns upper_ set to guess if the
     # guess was too high, and _lower set to guess if the guess was too low.
     if balance < -0.01:
