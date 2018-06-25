@@ -104,7 +104,7 @@ def hangman(secretWord):
     print('Welcome to the game Hangman!')
     print('I am thinking of a word that is {} letters long.'.format(len(secretWord)))
     print('-----------')
-    while mistakesMade <= 8:
+    while mistakesMade < 8 and not win:
         print('You have {} guesses left'.format(8 - mistakesMade))
         print('Available letters: ', getAvailableLetters(lettersGuessed))
         guess = input('Please guess a letter: ')
@@ -120,14 +120,10 @@ def hangman(secretWord):
         print('-----------')
         if isWordGuessed(secretWord, lettersGuessed):
             win = True
-            break
     if win:
         print('Congratulations, you won!')
     else:
         print('Sorry, you ran out of guesses. The word was {}'.format(secretWord))
-
-
-
 
 
 # When you've completed your hangman function, uncomment these two lines
