@@ -48,7 +48,7 @@ def getFrequencyDict(sequence):
     for x in sequence:
         freq[x] = freq.get(x,0) + 1
     return freq
-	
+
 
 # (end of helper code)
 # -----------------------------------
@@ -71,7 +71,14 @@ def getWordScore(word, n):
     n: integer (HAND_SIZE; i.e., hand size required for additional points)
     returns: int >= 0
     """
-    # TO DO ... <-- Remove this comment when you code this function
+    if not word:
+        return 0
+    score = 0
+    for char in word:
+        score += SCRABBLE_LETTER_VALUES[char]
+    return score * len(word) if len(word) < n else score * len(word) + 50
+
+
 
 
 
@@ -142,7 +149,8 @@ def updateHand(hand, word):
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
     """
-    # TO DO ... <-- Remove this comment when you code this function
+    return {k: hand[k] - word.count(k) for k in hand}
+
 
 
 
