@@ -16,3 +16,6 @@ def pay_debt_in_one_year(balance, interest):
             break
         payment += 10
     return payment
+
+print(pay_debt_in_one_year(320000000, 0.2))
+
