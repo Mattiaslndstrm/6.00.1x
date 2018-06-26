@@ -269,12 +269,13 @@ def playGame(wordList):
         if choice == 'n':
             hand = dealHand(HAND_SIZE)
             playHand(hand, wordList, HAND_SIZE)
-        if choice == 'r':
+        elif choice == 'r':
             if not hand:
-                print('You have not played a hand yet. Please play a new hand first!\n')
+                print(('You have not played a hand yet. Please play a new hand'
+                       'first!\n'))
                 continue
             playHand(hand, wordList, HAND_SIZE)
-        if choice == 'e':
+        elif choice == 'e':
             break
         else:
             print('Invalid command.')
