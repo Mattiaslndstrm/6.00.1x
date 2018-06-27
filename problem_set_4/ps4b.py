@@ -128,11 +128,36 @@ def playGame(wordList):
 
     wordList: list (string)
     """
+    hand = None
+    while True:
+        choice = input(('Enter n to deal a new hand, r to replay the last hand'
+                        ', or e to end game: '))
+        if choice not in 'nre':
+            print('Invalid command.\n')
+            continue
+        elif choice == 'r' and not hand:
+            print('You have not played a hand yet. Please play a new hand first!')
+            continue
+        elif choice == 'e':
+            break
+        while True:
+            player = input(('Enter u to have yourself play, c to have the'
+                            ' computer play: '))
+            if player in 'cu':
+                break
+            print('Invalid command.\n')
+        if player == 'u':
+            if choice == 'n':
+                hand = dealHand(HAND_SIZE)
+                playHand(hand, wordList, HAND_SIZE)
+            elif choice == 'r':
+                playHand(hand, wordList, HAND_SIZE)
+        elif player == 'c':
+            if not hand or choice == 'n':
+                hand = dealHand(HAND_SIZE)
+            compPlayHand(hand, wordList, HAND_SIZE)
 
 
-#
-# Build data structures used for entire session and play game
-#
 if __name__ == '__main__':
     wordList = loadWords()
     playGame(wordList)
