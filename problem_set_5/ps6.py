@@ -149,8 +149,8 @@ class PlaintextMessage(Message):
         '''
         super().__init__(text)
         self.shift = shift
-        self.encrypting_dict = super().build_shift_dict(shift)
-        self.message_text_encrypted = super().apply_shift(shift)
+        self.encrypting_dict = self.build_shift_dict(shift)
+        self.message_text_encrypted = self.apply_shift(shift)
 
     def get_shift(self):
         '''
@@ -166,7 +166,7 @@ class PlaintextMessage(Message):
 
         Returns: a COPY of self.encrypting_dict
         '''
-        return self.encrypting_dict.copy()
+        return self.encrypting_dict
 
     def get_message_text_encrypted(self):
         '''
@@ -203,7 +203,7 @@ class CiphertextMessage(Message):
             self.message_text (string, determined by input text)
             self.valid_words (list, determined using helper function load_words)
         '''
-        pass  # delete this line and replace with your code here
+        super().__init__(text)
 
     def decrypt_message(self):
         '''
@@ -221,7 +221,14 @@ class CiphertextMessage(Message):
         Returns: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         '''
-        pass  # delete this line and replace with your code here
+        result = []
+        for shift in range(1, 26):
+            message, valid = self.apply_shift(shift), 0
+            for word in message.split(' '):
+                if is_word(self.valid_words, word):
+                    valid += 1
+            result.append((shift, message, valid))
+        return max(result, key=lambda a: a[2])[:2]
 
 
 # Example test case (PlaintextMessage)
