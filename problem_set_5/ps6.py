@@ -231,6 +231,11 @@ class CiphertextMessage(Message):
         return max(result, key=lambda a: a[2])[:2]
 
 
+def decrypt_story():
+    story = CiphertextMessage(get_story_string())
+    return story.decrypt_message()
+
+
 # Example test case (PlaintextMessage)
 plaintext = PlaintextMessage('hello', 2)
 print('Expected Output: jgnnq')
