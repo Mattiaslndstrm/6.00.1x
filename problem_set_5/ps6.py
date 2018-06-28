@@ -125,7 +125,8 @@ class Message(object):
         Returns: the message text (string) in which every character is shifted
              down the alphabet by the input shift
         '''
-        pass  # delete this line and replace with your code here
+        return ''.join(self.build_shift_dict(shift).get(f, f)
+                       for f in self.message_text)
 
 
 class PlaintextMessage(Message):
@@ -146,7 +147,7 @@ class PlaintextMessage(Message):
         Hint: consider using the parent class constructor so less 
         code is repeated
         '''
-
+        pass  # delete this line and replace with your code here
 
     def get_shift(self):
         '''
