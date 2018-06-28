@@ -107,7 +107,11 @@ class Message(object):
         Returns: a dictionary mapping a letter (string) to
                  another letter (string).
         '''
-        pass  # delete this line and replace with your code here
+        return {
+                char: chr((ord(char) - 97 + shift) % 26 + 97) if ord(char) > 90
+                else chr((ord(char) - 65 + shift) % 26 + 65)
+                for char in string.ascii_letters
+                }
 
     def apply_shift(self, shift):
         '''
@@ -142,7 +146,7 @@ class PlaintextMessage(Message):
         Hint: consider using the parent class constructor so less 
         code is repeated
         '''
-        pass  # delete this line and replace with your code here
+
 
     def get_shift(self):
         '''
